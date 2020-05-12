@@ -75,13 +75,15 @@ int age = stringToInt(in.nextLine()); //Funció per a convertir
 //Si l'usuari no escriu un número, peta
 ```
 
-# UF3 - Exercici Pràctic 0
+### Lectura i escriptura de fitxers amb FileWriter, FileReader, BufferedWriter i BufferedReader.
+
+# UF3 - Exercici Pràctic 0 - Enunciat
 
 En la solució _innocent_ de l'anterior UF (que imprimia llistes ordenades d'estudiants), amb el mètode `init()` es creava un array d'estudiants donant valors a les diferents propietats de cada instància de la classe `Student` (instàncies que es s'assignaven a les diferents posicions de l'array, fins a omplenar-lo). Com aquests valors estan incorporats dins del codi del programa, en el mètode `init()`, diem que són valors _fixes_ en el sentit que cada cop que s'executa el programa, no canvïen. I per tant, els continguts de l'array `Student[] students` són sempre els mateixos.
 
 Teniu el codi a la carpeta _innocent_, per si voleu fer un cop d'ull al mètode `init()` (que està a la classe `App`).
 
-### Exercici 0 (30%)
+### Exercici 0 (40%)
 
 Teniu el codi de partida a la carpeta _tui_. Heu de substituir el mètode `init()` pel mètode `initTui()`. Des del mètode psvm cridarem `initTui()` enlloc de cridar `init()`.
 
@@ -107,7 +109,15 @@ Enter nº enrolled subjects: 6
 Aquest és només un exemple. Vosaltres anireu omplint els estudiants amb els valors que vulgueu.
 
 
-### Exercici 1 
+### Exercici 1 (60%)
 
+En aquest exercici heu de modificar el programa resultant de l'exercici 0 anterior d'aquesta mateixa pràctica de manera que, a banda d'imprimir per pantalla les llistes dels alumnes, també haurà de guardar les llistes en un fitxer, que s'anomenarà students.out
 
+És a dir, en acabar l'exercici 0 i també aquest exercici 1, el vostre programa haurà de:
+
+* Preguntar per pantalla la informació necessària per a omplir l'array d'estudiants (cosa que ja heu fet a l'exercici 0). L'usuari entrarà aquesta informació per teclat.
+* Imprimir per pantalla les llistes dels estudiants (això ja ho teniu fet en el codi que s'adjunta en aquest enunciat, i que és el codi que vau fer a la UF2).
+* Guardar en un fitxer `students.out` les llistes d'estudiants tal qual surten impreses per pantalla (això és el que heu de fer de nou en aquest exercici).
+
+Per a guardar aquesta informació en un fitxer, heu d'usar les classes FileWriter, FileReader, BufferedWriter i BufferedReader tal com s'expliquen en els conceptes previs d'aquesta pràctica.
 

@@ -111,13 +111,14 @@ Aquest és només un exemple. Vosaltres anireu omplint els estudiants amb els va
 
 ### Exercici 1 (60%)
 
-En aquest exercici heu de modificar el programa resultant de l'exercici 0 anterior d'aquesta mateixa pràctica de manera que, a banda d'imprimir per pantalla les llistes dels alumnes, també haurà de guardar les llistes en un fitxer, que s'anomenarà students.out
+En aquest exercici heu de modificar el programa _innocent_ de manera que, a banda d'imprimir per pantalla les llistes dels alumnes, també haurà de guardar les llistes en un fitxer, que s'anomenarà `students.out`
 
-És a dir, en acabar l'exercici 0 i també aquest exercici 1, el vostre programa haurà de:
+És a dir, en acabar aquest exercici 1, el vostre programa haurà de:
 
-* Preguntar per pantalla la informació necessària per a omplir l'array d'estudiants (cosa que ja heu fet a l'exercici 0). L'usuari entrarà aquesta informació per teclat.
 * Imprimir per pantalla les llistes dels estudiants (això ja ho teniu fet en el codi que s'adjunta en aquest enunciat, i que és el codi que vau fer a la UF2).
 * Guardar en un fitxer `students.out` les llistes d'estudiants tal qual surten impreses per pantalla (això és el que heu de fer de nou en aquest exercici).
 
-Per a guardar aquesta informació en un fitxer, heu d'usar les classes FileWriter, FileReader, BufferedWriter i BufferedReader tal com s'expliquen en els conceptes previs d'aquesta pràctica.
+**Nota**: heu de partir del programa _innocent_, **no** del programa _tui_. El codi de partida us l'he deixat a la carpeta _files_, que és el mateix codi que _innocent_ però amb els `//TODO` i comentaris necessaris perquè el completeu.
+
+Per a guardar aquesta informació en un fitxer, heu d'usar les classes **FileWriter, FileReader, BufferedWriter i BufferedReader** tal com s'expliquen en els conceptes previs d'aquesta pràctica.
 

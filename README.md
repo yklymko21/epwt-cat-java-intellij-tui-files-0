@@ -77,6 +77,8 @@ int age = stringToInt(in.nextLine()); //Funció per a convertir
 
 ### Lectura i escriptura de fitxers amb FileWriter, FileReader, BufferedWriter i BufferedReader.
 
+Nota: teniu els exemples explicats a les carpetes _files_exemple0_ i _files_exemple1_.
+
 Amb Java podem representar un fitxer amb la classe `File`. Exemple:
 
 ```java
@@ -234,24 +236,53 @@ Veiem un exemple d'escriptura, i un exemple de lectura:
 
 ```java
 //Exemple d'escriptura a fitxer
+    static void writeToFileWithBuffer(File file, String message) throws IOException{
+
+        FileWriter fw = new FileWriter(file, true);
+
+        BufferedWriter bufw = new BufferedWriter(fw);
+
+        bufw.write(message);
+
+        bufw.close();
+    }
 ```
+
+Com podeu veure, li passem la instància de `FileWriter` al `BufferedWriter`. Diem que `BufferedWriter` fa de _wrapper_ (embolcall) de `FileWriter`, afegint noves característiques a `FileWriter` (en aquest cas, la capacitat d'usar una memòria _buffer_ per a millorar l'eficiencia de l'escriptura de texts grans). 
+
+```java
+    static String readFromFile(File file) throws IOException {
+        FileReader fr = new FileReader(file);
+        BufferedReader bufr = new BufferedReader(fr);
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while((line = bufr.readLine()) != null){
+            sb.append(line);
+        }
+        bufr.close();
+        return sb.toString();
+    }
+```
+En aquest cas, el `BufferedReader` ens proporciona un nou mètode (no disponible al `FileReader`) que és el `ReadLine()` i que ens permet llegir una línia del fitxer, retornant un String, o _null_ si no hi ha més línies a llegir.
 
 
 # UF3 - Exercici Pràctic 0 - Enunciat
 
-En la solució _innocent_ de l'anterior UF (que imprimia llistes ordenades d'estudiants), amb el mètode `init()` es creava un array d'estudiants donant valors a les diferents propietats de cada instància de la classe `Student` (instàncies que es s'assignaven a les diferents posicions de l'array, fins a omplenar-lo). Com aquests valors estan incorporats dins del codi del programa, en el mètode `init()`, diem que són valors _fixes_ en el sentit que cada cop que s'executa el programa, no canvïen. I per tant, els continguts de l'array `Student[] students` són sempre els mateixos.
+En la solució _innocent_ (que us he adjuntat en aquest enunciat a la carpeta _students_) de l'anterior UF (que imprimia llistes ordenades d'estudiants), amb el mètode `init()` es creava un array d'estudiants donant valors a les diferents propietats de cada instància de la classe `Student` (instàncies que s'assignaven a les diferents posicions de l'array, fins a omplenar-lo). Com aquests valors estan incorporats dins del codi del programa, en el mètode `init()`, diem que són valors _fixes_ en el sentit que cada cop que s'executa el programa, no canvïen. I per tant, els continguts de l'array `Student[] students` són sempre els mateixos.
 
-Teniu el codi a la carpeta _innocent_, per si voleu fer un cop d'ull al mètode `init()` (que està a la classe `App`).
+Teniu el codi a la carpeta _students_, per si voleu fer un cop d'ull al mètode `init()` (que està a la classe `App`).
 
 ### Exercici 0 (40%)
 
-Teniu el codi de partida a la carpeta _tui_. Heu de substituir el mètode `init()` pel mètode `initTui()`. Des del mètode psvm cridarem `initTui()` enlloc de cridar `init()`.
+Teniu el codi de partida a la carpeta _tui_lliurament_. Heu de substituir el mètode `init()` pel mètode `initTui()`. Des del mètode psvm cridarem `initTui()` enlloc de cridar `init()`.
 
-El mètode `initTui()` preguntarà primer a l'usuari quants estudiants vol afegir a l'array d'estudiants, i després preguntarà a l'usuari el nom, l'edat i el número d'assignatures matriculades per a cadascun dels estudiants.
+En aquest cas he eliminat la classe _Arrays_ per fer el codi més simple. Per tant, el codi que trobareu a la carpeta _tui_lliurament_ només imprimirà la llista desordenada d'estudiants, tal qual està a l'array d'Student. No imprimirà les llistes ordenades dels estudiants tal com feia a l'anterior UF (i tal com teniu a la carpeta _students_).
 
-Heu d'usar la classe `Scanner` i `System.in` de manera similar als exemples anteriors.
+El mètode `initTui()` (**que heu d'implementar**) preguntarà primer a l'usuari quants estudiants vol afegir a l'array d'estudiants, i després preguntarà a l'usuari el nom, l'edat i el número d'assignatures matriculades per a cadascun dels estudiants.
 
-El resultat (a banda d'imprimir les llistes ordenades dels estudiants) ha de ser el següent. Amb això, crearem l'array d'estudiants amb les dades introduïdes des del teclat:
+Heu d'usar la classe `Scanner` i `System.in` de manera similar als exemples explicats abans en la secció de conceptes previs.
+
+El resultat (a banda d'imprimir la llista dels estudiants) ha de ser el següent. Amb això, crearem l'array d'estudiants amb les dades introduïdes des del teclat:
 
 ```
 Number of students: 2
@@ -269,16 +300,13 @@ Enter nº enrolled subjects: 6
 Aquest és només un exemple. Vosaltres anireu omplint els estudiants amb els valors que vulgueu.
 
 
-### Exercici 1 (60%)
+### Exercici 1 (35%)
 
-En aquest exercici heu de modificar el programa _innocent_ de manera que, a banda d'imprimir per pantalla les llistes dels alumnes, també haurà de guardar les llistes en un fitxer, que s'anomenarà `students.out`
+En aquest exercici heu de completar el programa que trobareu a la carpeta _files_lliurament_ de manera que, a banda d'imprimir per pantalla la llista dels alumnes, també haurà de guardar la llista en un fitxer, que s'anomenarà `students.out`, i després haurà de llegir el contingut del fitxer, que també haurà d'imprimir per pantalla.
 
-És a dir, en acabar aquest exercici 1, el vostre programa haurà de:
+Per a guardar aquesta informació en un fitxer, heu d'usar les classes **FileWriter, FileReader** tal com s'expliquen en els conceptes previs d'aquesta pràctica, **no** heu d'usar les classes **BufferedWriter i BufferedReader**.
 
-* Imprimir per pantalla les llistes dels estudiants (això ja ho teniu fet en el codi que s'adjunta en aquest enunciat, i que és el codi que vau fer a la UF2).
-* Guardar en un fitxer `students.out` les llistes d'estudiants tal qual surten impreses per pantalla (això és el que heu de fer de nou en aquest exercici).
+### Exercici 2 (25%)
 
-**Nota**: heu de partir del programa _innocent_, **no** del programa _tui_. El codi de partida us l'he deixat a la carpeta _files_, que és el mateix codi que _innocent_ però amb els `//TODO` i comentaris necessaris perquè el completeu.
-
-Per a guardar aquesta informació en un fitxer, heu d'usar les classes **FileWriter, FileReader, BufferedWriter i BufferedReader** tal com s'expliquen en els conceptes previs d'aquesta pràctica.
+En aquest exercici heu de completar el codi que falta en el programa que trobareu a la carpeta _files_lliurament2_, però ara usant també  **BufferedWriter i BufferedReader**.
 

@@ -4,11 +4,11 @@
 
 ### TUI (Terminal User Interface)
 
-A Java podem preguntar a l'usuari que introdueixi valors per pantalla. L'usuari usarà el teclat. Un cop l'usuari ha introduit valors, els podem guardar en variables.
+A Java podem preguntar a l'usuari que introdueixi valors per pantalla. L'usuari usarà el teclat. Un cop l'usuari ha introduit valors, els podrem guardar en variables.
 
 Això ho aconseguim amb la classe `Scanner` i `System.in`. `System.in` (entrada des del teclat) és el contrari de `System.out` (impresió per pantalla).
 
-Hi ha diferents tipus de `Scanner`. Per a diferenciar un tipus d'`Scanner` d'un altre, en el moment d'instanciar un objecte amb `new` li haurem de passar com a argument algun valor que sigui vàlid. Per exemple, a continuació tenim dos tipus diferents de `Scanner`:
+Hi ha diferents tipus de `Scanner`. Per a diferenciar un tipus d'`Scanner` d'un altre, en el moment d'instanciar un objecte amb `new` li haurem de passar com a argument algun valor que sigui vàlid, i depenent del valor que li passem, tindrem un tipus d'Scanner o un altre. Per exemple, a continuació tenim dos tipus diferents de `Scanner`:
 
 ```java
 Scanner scan1 = new Scanner("Programming is funny");
@@ -28,7 +28,7 @@ Per veure com funciona `Scanner` com a _tui_, posem un exemple:
 Scanner in = new Scanner(System.in)
 
 System.out.print("Com et dius? ");
-String name = in.nextLine();
+String name = in.nextLine(); //Escaneja la següent línia i la guarda en la variable name
 
 System.out.println("El teu nom és " + name);
 
@@ -57,7 +57,7 @@ Cal anar amb compte amb l'ús de `nextInt`, `nextDouble`, etc ja que, al contrar
 
 Amb l'enunciat de la pràctica us ofereixo un mètode a la classe `Utils` que serveix per a convertir un String a int.
 
-**Compte**: si intenteu llegir un String que no és un int amb `nextInt()` us donarà error. Així mateix, us donarà error si intenteu convertir un String a int quan l'String no és un enter. Exemples:
+**Compte**: si intenteu llegir un String que no és un enter amb `nextInt()` us donarà error. Per exemple, donarà error si l'String és "dos", però no donarà error si és "2". Així mateix, us donarà error si intenteu convertir un String a int quan l'String no és un enter. Exemples:
 
 ```java
 Scanner in = new Scanner(System.in)

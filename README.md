@@ -1,4 +1,8 @@
-# m3-uf3-ep0
+# Type: Exercici Pràctic Amb Teoria (With Theory)
+# Language: Catalan
+# Programming Language: Java
+# Tools: IntelliJ, git
+# Contents: TUI, Files 
 
 ## Conceptes previs
 

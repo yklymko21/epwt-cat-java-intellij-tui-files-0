@@ -23,6 +23,7 @@ public class App {
 
     //Mètode que genera un String amb la llista d'estudiants
     static String buildStudentListString(Student [] students, String message){
+        // StringBuilder
         StringBuilder sb = new StringBuilder();
         sb.append("\n**** ");
         sb.append(message);
@@ -31,7 +32,7 @@ public class App {
             sb.append(s.toString());
             sb.append("\n");
         }
-        return sb.toString();
+        return sb.toString(); // Devolvemos el resultado
     }
 
     static public Student[] initTui() {
@@ -40,6 +41,8 @@ public class App {
         Student students[] = new Student[0];
 
         //Ara, hem de preguntar quants estudiants volem tenir
+
+        // Creamos Scanner inicial de preguntas
         Scanner in = new Scanner(System.in);
         System.out.print("Number of students: ");
         String numberOfStudentsStr = in.nextLine().trim();
@@ -48,10 +51,13 @@ public class App {
 
         //Si el número d'estudiants és més gran que 0
         //preguntarem el nom, edat i subjects de cada estudiant
+
+        // Siempre cuando sea mayor que 0 el numero pasado
         if(numberOfStudents > 0) {
 
             students = new Student[numberOfStudents];
 
+            // Recorreremos el bucle sacando siempre preguntas
            for(int i = 0; i < numberOfStudents; i++){
 
                Student newStudent = new Student();
@@ -73,7 +79,7 @@ public class App {
             }
         }
         in.close();
-        return students;
+        return students; // Devolvemos el Array de Students
     }
 }
 

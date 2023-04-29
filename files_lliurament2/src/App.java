@@ -19,6 +19,7 @@ public class App {
     }
 
     static String readFromFile(File file) throws IOException {
+        // BufferedReader
         FileReader fr = new FileReader(file);
         BufferedReader bufr = new BufferedReader(fr);
         StringBuilder sbuild = new StringBuilder();
@@ -31,7 +32,7 @@ public class App {
     }
 
     static void saveToFile(String str, File file, boolean append) throws IOException {
-        // FileWriter
+        // BufferedWriter
         FileWriter fwW = new FileWriter(file, true);
 
         BufferedWriter bufw = new BufferedWriter(fwW);

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class    App {
 
@@ -14,29 +15,34 @@ public class    App {
         //de forma desordenada
         printStudents(students, message);
 
-        //TODO Guardar la llista d'estudiants al fitxer students.out
-        //TODO Torna a imprimir la llista d'estudiants
+        saveToFile(students, message, file, true);
+        System.out.println(readFromFile(file));
         //però ara llegint-la del fitxer students.out
 
     }
 
     static String readFromFile(File file) throws IOException{
-        //TODO Implementar usant FileReader
+        FileReader fr = new FileReader(file);
+        StringBuilder sb = new StringBuilder();
+        int c;
+        while((c = fr.read()) != -1){
+            sb.append((char)c);
+        }
+        return sb.toString().replace(", ", "\r");
         //No podeu usar BufferedReader
     }
 
-    static void saveToFile(Student[] students, String message,
-                           File file, boolean append)
-            throws IOException {
-        //TODO Implementar usant FileWriter
+    static void saveToFile(Student[] students, String message, File file, boolean append) throws IOException {
+        FileWriter fw = new FileWriter(file, true);
+        fw.write(Arrays.toString(students).replace(", ", "\r").concat("\r"));
+        fw.close();
         //No podeu usar BufferedWriter
     }
 
     //Mètode que imprimeix la llista d'estudiants
     //Delega la creació de l'String al mètode
     //buildStudentListString
-    static void printStudents(Student [] students,
-                              String message){
+    static void printStudents(Student [] students, String message){
         System.out.println(buildListString(students, message));
     }
 
